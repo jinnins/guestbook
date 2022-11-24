@@ -102,9 +102,7 @@ pipeline {
     }
     post { 
         always { 
-
-
-
+            echo 'TEST001'
         }
         success { 
             slackSend(tokenCredentialId: 'slack-token'
