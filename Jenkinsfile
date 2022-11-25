@@ -1,4 +1,22 @@
+
 import java.text.SimpleDateFormat
+st {
+        always {
+            echo 'TEST001'
+        }
+        success {
+            slackSend(tokenCredentialId: 'slack-token'
+                , channel: '#개발'
+                , color: 'good'
+                , message: "${JOB_NAME} (${BUILD_NUMBER}) 빌드가 성공적으로 끝났습니다. Details: (<${BUILD_URL} | here >)")
+        }
+        failure {
+            slackSend(tokenCredentialId: 'slack-token'
+                , channel: '#개발'
+                , color: 'danger'
+                , message: "${JOB_NAME} (${BUILD_NUMBER}) 빌드가 실패하였습니다. Details: (<${BUILD_L} | here >)")
+    }
+
 
 def TODAY = (new SimpleDateFormat("yyyyMMddHHmmss")).format(new Date())
 
